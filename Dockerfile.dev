@@ -1,0 +1,11 @@
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install
+
+# not really needed here since we reference volumes, but would be in prod
+COPY . .
+
+CMD ["npm", "start"]
