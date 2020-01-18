@@ -7,3 +7,15 @@ before_install:
 
 script:
   - docker run -e CI=true dzaruun/realfrontend npm run test 
+
+deploy: 
+  provider: elasticbeanstalk 
+  region: "eu-west-1" 
+  app: "dockersample" 
+  env: "Dockersample-env" 
+  bucket_name: "elasticbeanstalk-eu-west-1-101951319944" 
+  bucket_path: "dockersample" 
+  on:
+    branch: master 
+  access_key_id: $AWS_ACCESS_KEY 
+  secret_access_key: $AWS_SECRET_KEY
