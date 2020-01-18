@@ -1,0 +1,9 @@
+sudo: required
+services: 
+  - docker 
+
+before_install: 
+  - docker build -t dzaruun/realfrontend -f Dockerfile.dev . 
+
+script:
+  - docker run -e CI=true dzaruun/realfrontend npm run test 
